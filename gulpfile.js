@@ -73,6 +73,8 @@ gulp.task('copy', function() {
         .pipe(gulp.dest(distPath));
     gulp.src(path.join(sourcePath, 'fonts/**/*.+(woff|ttf)'))
         .pipe(gulp.dest(path.join(distPath, 'fonts/')));
+    gulp.src(path.join(sourcePath, 'api/**/*.json'))
+        .pipe(gulp.dest(path.join(distPath, 'api/')));
 });
 
 gulp.task('watch', function() {

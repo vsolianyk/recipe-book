@@ -6,6 +6,29 @@
     margin: -15px 0;
 }
 
-[data-template] {
+.wrapper {
+    padding-top: 70px;
+}
+
+#recipes a {
+    text-decoration: none;
+    color: #222;
+}
+
+.cart {
+    height: calc(100vh - 50px);
+    width: 250px;
+    border-left: 1px solid #aaa;
     display: none;
+    position: fixed;
+    right: 0;
+    top: 50px;
+}
+
+.cart-open .cart {
+    display: block;
+}
+
+.cart-open .content {
+    margin-right: 260px;
 }
