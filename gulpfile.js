@@ -7,7 +7,8 @@ var sourcemaps = require('gulp-sourcemaps');
 var imagemin = require('gulp-imagemin');
 var browserify = require('browserify');
 var babel = require('babelify');
-var concat = require('gulp-concat');
+var source = require('vinyl-source-stream');
+var buffer = require('vinyl-buffer');
 var uglify = require('gulp-uglify');
 var browserSync = require('browser-sync');
 
@@ -42,7 +43,8 @@ gulp.task('js', function() {
     browserify(path.join(sourcePath, 'js/main.js'), { debug: true })
         .transform(babel).bundle()
         .on('error', function(err) { console.error(err); this.emit('end'); })
-        .pipe(concat('main.js'))
+        .pipe(source('main.js'))
+        .pipe(buffer())
         .pipe(gulp.dest(path.join(distPath, 'js/')));
 
 });

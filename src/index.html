@@ -8,7 +8,41 @@
     <link rel="stylesheet" href="./css/main.css">
 </head>
 <body>
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand logo" href="#">
+                    <img alt="Brand" src="./img/logo.png">
+                </a>
+            </div>
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="#">Recipe List</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#">Cart</a></li>
+            </ul>
+        </div>
+    </nav>
     <div class="container">
+        <div class="row">
+            <div class="col-xs-12 clearfix">
+                <button class="btn btn-success pull-right">Add recipe</button>
+            </div>
+        </div>
+        <div id="recipes" class="row">
+            <div data-template class="col-sm-4 col-md-3 col-xs-6">
+                <div class="thumbnail">
+                    <img src="https://via.placeholder.com/300x200" alt="test">
+                    <div class="caption">
+                        <h3>Thumbnail label</h3>
+                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Soluta aliquam, corporis facilis repellat velit labore temporibus. Quidem debitis quasi sint voluptas, modi facere possimus! Itaque similique nisi eos quis libero.</p>
+                        <p>
+                            <a href="#" class="btn btn-primary" role="button">Add to cart</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
     <script src="js/main.js"></script>
