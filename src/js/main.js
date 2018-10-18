@@ -1,14 +1,17 @@
-import {getRecipes, getRecipeListItemTemplete} from './recipe';
-import { init, addIngredients } from './cart';
+import {getRecipes, getRecipe, renderRecipe, renderRecipes} from './recipe';
+import { init as initCart, addIngredients } from './cart';
 import * as $ from 'jquery';
 
 
 const pageName = getPageName();
 
-init();
+initCart($.find('#main')[0]);
 
 if (pageName === 'recipesList') {
     initRecipesList();
+}
+if (pageName === 'recipeDetails') {
+    initRecipeDetails();
 }
 
 function getPageName() {
@@ -16,6 +19,8 @@ function getPageName() {
         case '/':
         case '/index.html':
             return 'recipesList';
+        case '/recipe.html':
+            return 'recipeDetails';
         default:
             return '';
     }
@@ -23,23 +28,33 @@ function getPageName() {
 
 function initRecipesList() {
     let recipes;
-    function renderRecipes(list) {
-        recipes = list;
-        let tpl = '';
-        list.forEach((item) => {
-            tpl += getRecipeListItemTemplete(item);
-        });
-        $.find('#recipes')[0].innerHTML = tpl;
-    }
-
     $.find('#recipes')[0].addEventListener('click', (e) => {
-        debugger;
         if(e.target.tagName === 'BUTTON') {
             e.stopPropagation();
             e.preventDefault();
-            addIngredients(recipes[0].ingredients);
+            let id = +e.target.id.split('-')[1];
+            let found = recipes.find((r) => r.id === id);
+            if (found) {
+                addIngredients(found.ingredients);
+            }
         }
     });
 
-    getRecipes(renderRecipes);
+    getRecipes((data) => {
+        recipes = data;
+        renderRecipes('#recipes', data);
+    });
+}
+
+function initRecipeDetails() {
+    let queryStr = window.location.search.slice(1);
+    // ['id=12', 'name=vasy']
+    let query = queryStr.split('&').reduce((obj, item) => {
+        let parts = item.split('='); // ['id', '12']
+        obj[parts[0]] = parts[1];
+        return obj;
+    }, {});
+
+    getRecipe(query.id, renderRecipe);
+
 }

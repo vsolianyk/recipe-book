@@ -7,7 +7,7 @@
 }
 
 .wrapper {
-    padding-top: 70px;
+    padding-top: 170px;
 }
 
 #recipes a {
@@ -15,20 +15,37 @@
     color: #222;
 }
 
+#recipes img {
+    height: 200px;
+}
+
 .cart {
-    height: calc(100vh - 50px);
-    width: 250px;
-    border-left: 1px solid #aaa;
+    border: 1px solid #aaa;
     display: none;
-    position: fixed;
-    right: 0;
-    top: 50px;
 }
 
 .cart-open .cart {
     display: block;
 }
 
-.cart-open .content {
-    margin-right: 260px;
+@media (min-width: 768px) {
+    .cart {
+        height: calc(100vh - 50px);
+        width: 250px;
+        border-left: 1px solid #aaa;
+        position: fixed;
+        right: 0;
+        top: 50px;
+
+        padding: 15px;
+    }
+
+    .wrapper {
+        padding-top: 70px;
+    }
+
+    .cart-open .content {
+        margin-right: 260px;
+        
+    }
 }
