@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/main.css">
+</head>
+<body class="">
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand logo" href="/">
+                    <img alt="Brand" src="./img/logo.png">
+                </a>
+            </div>
+            <ul class="nav navbar-nav">
+                <li><a href="/">Recipe List</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li id="cart-button"><a href="javascript:void(0)">Cart (<span class="counter">0</span>)</a></li>
+            </ul>
+        </div>
+    </nav>
+    <div class="clearfix wrapper" id="main">
+        <div class="container content">
+            <form class="row" id="recipeForm" novalidate>
+                <div class="form-group">
+                    <label for="title">Title</label>
+                    <input type="text" class="form-control" id="title" name="title" placeholder="Title">
+                </div>
+                <div class="form-group" style="display: none">
+                    <div class="thumbnail">
+                        <img id="preview" src="javascript:void(0)" alt="">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="imageUrl">Image URL</label>
+                    <input type="text" class="form-control" id="imageUrl" name="imageUrl" placeholder="Image URL">
+                </div>
+                <div class="form-group">
+                    <label for="category">Category</label>
+                    <input type="text" class="form-control" id="category" name="category" placeholder="Category">
+                </div>
+                <div class="form-group">
+                    <label for="description">Description</label>
+                    <textarea class="form-control" id="description" name="description" placeholder="Description">
+
+                    </textarea>
+                </div>
+
+                <div class="form-group" id="ingredientsForm">
+                    <label for="description">Ingredients</label>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <ul class="list-group" id="addedIng"></ul>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-4">
+                            <input type="text" class="form-control" id="ingName" name="ingName" placeholder="Name">
+                        </div>
+                        <div class="col-xs-4">
+                            <input type="text" class="form-control" id="ingCount" name="ingCount" placeholder="Count">
+                        </div>
+                        <div class="col-xs-4">
+                            <select class="form-control" name="ingUnits" id="ingUnits">
+                                <option value="" selected>Select</option>
+                                <option value="g">gram</option>
+                                <option value="pc">pices</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row" style="margin-top: 10px;">
+                        <div class="col-xs-12">
+                            <a href="javascript:void(0)" class="btn btn-success">Add</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary">Save</button>
+                </div>
+                
+            </form>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

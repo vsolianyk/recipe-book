@@ -1,5 +1,6 @@
 import {getRecipes, getRecipe, renderRecipe, renderRecipes} from './recipe';
 import { init as initCart, addIngredients } from './cart';
+import { init as initForm, renderRecipeForm } from './recipe-form';
 import * as $ from 'jquery';
 
 
@@ -14,6 +15,10 @@ if (pageName === 'recipeDetails') {
     initRecipeDetails();
 }
 
+if (pageName === 'recipeForm') {
+    initRecipeForm();
+}
+
 function getPageName() {
     switch(window.location.pathname) {
         case '/':
@@ -21,6 +26,8 @@ function getPageName() {
             return 'recipesList';
         case '/recipe.html':
             return 'recipeDetails';
+        case '/recipe-form.html':
+            return 'recipeForm';
         default:
             return '';
     }
@@ -47,6 +54,44 @@ function initRecipesList() {
 }
 
 function initRecipeDetails() {
+    let query = getQueryParams();
+
+    getRecipe(query.id, renderRecipe);
+
+}
+
+function initRecipeForm() {
+    let query = getQueryParams();
+    let config = {
+        title: {
+            validation: {
+                required: true
+            }
+        }, 
+        description: {
+            validation: {
+                required: true
+            }
+        }, 
+        imageUrl: {
+            validation: {
+                required: true,
+                pattern: ''
+            }
+        }
+    };
+
+    if(query.id) {
+        getRecipe(query.id, (data) => {
+            renderRecipeForm('#recipeForm', data);
+            initForm('#recipeForm', config);
+        });
+    } else {
+        initForm('#recipeForm', config);
+    }
+}
+
+function getQueryParams() {
     let queryStr = window.location.search.slice(1);
     // ['id=12', 'name=vasy']
     let query = queryStr.split('&').reduce((obj, item) => {
@@ -54,7 +99,5 @@ function initRecipeDetails() {
         obj[parts[0]] = parts[1];
         return obj;
     }, {});
-
-    getRecipe(query.id, renderRecipe);
-
+    return query;
 }

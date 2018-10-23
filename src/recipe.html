@@ -16,7 +16,7 @@
                 </a>
             </div>
             <ul class="nav navbar-nav">
-                <li class="active"><a href="#">Recipe List</a></li>
+                <li><a href="/">Recipe List</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li id="cart-button"><a href="javascript:void(0)">Cart (<span class="counter">0</span>)</a></li>
@@ -25,7 +25,22 @@
     </nav>
     <div class="clearfix wrapper" id="main">
         <div class="container-fluid content">
-            
+            <div class="row">
+                <div class="col-sm-4">
+                    <img id="image" src="javascript:void" alt=""/>
+                </div>
+                <div class="col-sm-8">
+                    <p>
+                        <a class="btn btn-default" href="">Edit</a>
+                    </p>
+                    <h3 id="title"></h3>
+                    <p id="description"></p>
+                    <p>
+                        <span class="badge" id="category"></span>
+                    </p>
+                    <ul class="list-group" id="ingredients-list"></ul>
+                </div>
+            </div>
         </div>
     </div>
 
